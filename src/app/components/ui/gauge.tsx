@@ -10,7 +10,7 @@ type Props = {
 
 export default function Speedometer({ value, label, color = "#3b82f6" }: Props) {
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center ml-4 mr-4">
             <div className="w-[128px] h-[128px]">
                 <CircularProgressbar
                     value={value}

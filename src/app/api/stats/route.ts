@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import * as si from "systeminformation";
+import { formatDistanceStrict } from "date-fns";
+import { ru } from "date-fns/locale";
 
 export async function GET() {
     try {
@@ -34,7 +36,9 @@ export async function GET() {
             },
             system: {
                 os: osInfo.distro,
-                uptime: si.time().uptime,
+                uptime: formatDistanceStrict(0, si.time().uptime, { locale: ru }),
+                bios: (await si.bios()).features,
+                si: osInfo.platform,
             },
         });
     } catch (error) {
